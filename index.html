@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Decoration | Luxury Event Styling & Decor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sweet-pink: #F8C8DC;
+            --sweet-pink-light: #FADADD;
+            --dusty-pink: #D8A7B1;
+            --dusty-pink-deep: #C58997;
+            --card-pink: #F5BFD4;
+            --card-pink-soft: #F7CDDF;
+            --accent-gold: #B88A58;
+            --dark-text: #2C1D21;
+            --light-text: #FFF0F5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--sweet-pink-light) 0%, var(--sweet-pink) 45%, var(--dusty-pink) 100%);
+            background-attachment: fixed;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Header / Nav */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(248, 200, 220, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 137, 151, 0.45);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #9E5266;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: #9E5266;
+        }
+
+        .nav-cta {
+            background: var(--dark-text);
+            color: var(--light-text);
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: #9E5266;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 5% 5rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        .hero-content h1 span {
+            color: #9E5266;
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #4A3238;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--dark-text);
+            color: var(--light-text);
+        }
+
+        .btn-primary:hover {
+            background: #9E5266;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--dark-text);
+            color: var(--dark-text);
+            background: rgba(248, 200, 220, 0.4);
+        }
+
+        .btn-outline:hover {
+            background: var(--dark-text);
+            color: var(--light-text);
+        }
+
+        /* Interactive Hero Image with Tilt & Float */
+        .hero-image-wrapper {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .hero-image-frame {
+            border-radius: 200px 200px 20px 20px;
+            overflow: hidden;
+            box-shadow: 0 24px 48px rgba(158, 82, 102, 0.32);
+            border: 8px solid var(--dusty-pink);
+            background: var(--card-pink);
+            height: 550px;
+            transition: transform 0.25s ease-out, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .hero-image-frame:hover {
+            box-shadow: 0 32px 60px rgba(158, 82, 102, 0.45);
+        }
+
+        .hero-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease-out;
+        }
+
+        .hero-image-frame:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Portfolio / Gallery Section */
+        .gallery-section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .section-header p {
+            color: #4A3238;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(245, 191, 212, 0.7);
+            border: 1px solid #9E5266;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--dark-text);
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #9E5266;
+            color: var(--light-text);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            perspective: 1200px;
+        }
+
+        .gallery-item {
+            background: linear-gradient(145deg, var(--card-pink-soft), var(--dusty-pink));
+            border: 1px solid rgba(158, 82, 102, 0.3);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(158, 82, 102, 0.18);
+            transition: transform 0.22s ease-out, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+            touch-action: manipulation;
+        }
+
+        .gallery-item:hover,
+        .gallery-item.is-touched {
+            box-shadow: 0 22px 45px rgba(158, 82, 102, 0.35);
+        }
+
+        .gallery-img-box {
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+            background: var(--dusty-pink);
+        }
+
+        .gallery-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease-out;
+            will-change: transform;
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+            background: rgba(248, 200, 220, 0.65);
+        }
+
+        .gallery-info h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.4rem;
+            color: var(--dark-text);
+        }
+
+        .gallery-info p {
+            color: #4A3238;
+            font-size: 0.9rem;
+        }
+
+        /* Services & Pricing Banner */
+        .services-section {
+            background: linear-gradient(135deg, rgba(216, 167, 177, 0.65), rgba(248, 200, 220, 0.75));
+            border-top: 1px solid rgba(158, 82, 102, 0.25);
+            border-bottom: 1px solid rgba(158, 82, 102, 0.25);
+            padding: 6rem 5%;
+            margin: 4rem 0;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, var(--sweet-pink-light), var(--card-pink));
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(158, 82, 102, 0.15);
+            text-align: center;
+            border: 1px solid rgba(158, 82, 102, 0.25);
+            border-bottom: 4px solid #9E5266;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .service-card p {
+            color: #4A3238;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Booking / Contact Section */
+        .contact-section {
+            max-width: 1000px;
+            margin: 6rem auto;
+            padding: 0 5%;
+        }
+
+        .contact-box {
+            background: linear-gradient(145deg, var(--sweet-pink-light), var(--dusty-pink));
+            border: 1px solid rgba(158, 82, 102, 0.35);
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: 0 20px 50px rgba(158, 82, 102, 0.25);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: #4A3238;
+            margin-bottom: 2rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .contact-detail span {
+            color: #9E5266;
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid rgba(158, 82, 102, 0.45);
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            background: rgba(250, 218, 221, 0.85);
+            color: var(--dark-text);
+        }
+
+        .form-control::placeholder {
+            color: #6E4953;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #9E5266;
+            background: var(--sweet-pink-light);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #3A2329;
+            color: var(--sweet-pink-light);
+            text-align: center;
+            padding: 3rem 5%;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 29, 33, 0.92);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 14px;
+            border: 4px solid var(--dusty-pink);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: var(--sweet-pink);
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: var(--light-text);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 968px) {
+            .hero, .contact-box {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo" id="brandLogo">Lucky <span>Decoration</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="https://wa.me/27814146710?text=Hi%20Lucky%20Decoration,%20I%20would%20like%20to%20inquire%20about%20event%20decor." class="nav-cta" target="_blank">Book on WhatsApp</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 id="heroTitle">Exquisite Decor & <span>Bespoke Styling</span></h1>
+            <p id="heroSubtitle">Transforming your milestone celebrations, luxury dinners, and baby showers into timeless works of art with our signature dusty pink and sweet pinky aesthetic.</p>
+            <div class="btn-group">
+                <a href="#portfolio" class="btn btn-primary">Explore Work</a>
+                <a href="https://wa.me/27814146710?text=Hi%20Lucky%20Decoration,%20I%20would%20like%20a%20quote%20for%20my%20event." class="btn btn-outline" target="_blank">Get a Quote</a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <div class="hero-image-frame interactive-pic" onclick="openLightbox('pic 14.jpeg')">
+                <img src="pic 14.jpeg" alt="Lucky Decoration Luxury Setup" id="heroImagePreview">
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="gallery-section" id="portfolio">
+        <div class="section-header">
+            <h2>Our Signature Portfolio</h2>
+            <p>Explore our recent event setups, tablescapes, and curated decor styling designed for unforgettable moments.</p>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterGallery('all', this)">All Events</button>
+            <button class="filter-btn" onclick="filterGallery('baby', this)">Baby Showers & Reveals</button>
+            <button class="filter-btn" onclick="filterGallery('wedding', this)">Weddings & Receptions</button>
+            <button class="filter-btn" onclick="filterGallery('tablescape', this)">Table Styling & Lounges</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- pic 14.jpeg -->
+            <div class="gallery-item interactive-pic" data-category="baby" onclick="openLightbox('pic 14.jpeg')">
+                <div class="gallery-img-box"><img src="pic 14.jpeg" alt="Oh Baby Sunlit Garden Dining"></div>
+                <div class="gallery-info">
+                    <h3> Garden Dining</h3>
+                    <p>Baby Showers & Table Styling</p>
+                </div>
+            </div>
+
+            <!-- pic 12.jpeg -->
+            <div class="gallery-item interactive-pic" data-category="baby" onclick="openLightbox('pic 12.jpeg')">
+                <div class="gallery-img-box"><img src="pic 12.jpeg" alt="Gender Reveal Arch & Setup"></div>
+                <div class="gallery-info">
+                    <h3>Gender Reveal Arch</h3>
+                    <p>Baby Showers & Reveals</p>
+                </div>
+            </div>
+
+            <!-- pic 10.jpeg -->
+            <div class="gallery-item interactive-pic" data-category="wedding" onclick="openLightbox('pic 10.jpeg')">
+                <div class="gallery-img-box"><img src="pic 10.jpeg" alt="Wedding Celebration Tablescape"></div>
+                <div class="gallery-info">
+                    <h3>Wedding Celebration</h3>
+                    <p>Weddings & Receptions</p>
+                </div>
+            </div>
+
+            <!-- pic 9.jpeg -->
+            <div class="gallery-item interactive-pic" data-category="tablescape" onclick="openLightbox('pic 9.jpeg')">
+                <div class="gallery-img-box"><img src="pic 9.jpeg" alt="Candlelight & Floral Details"></div>
+                <div class="gallery-info">
+                    <h3>Candlelight & Florals</h3>
+                    <p>Table Styling & Accents</p>
+                </div>
+            </div>
+
+            <!-- pic 7.jpeg -->
+            <div class="gallery-item interactive-pic" data-category="wedding" onclick="openLightbox('pic 7.jpeg')">
+                <div class="gallery-img-box"><img src="pic 7.jpeg" alt="Monogram Backdrop & Lounge"></div>
+                <div class="gallery-info">
+                    <h3>Monogram Backdrop & Lounge</h3>
+                    <p>Weddings & Receptions</p>
+                </div>
+            </div>
+
+            <!-- pic 6.jpeg -->
+            <div class="gallery-item interactive-pic" data-category="wedding" onclick="openLightbox('pic 6.jpeg')">
+                <div class="gallery-img-box"><img src="pic 6.jpeg" alt="Black & Gold Reception Banquet"></div>
+                <div class="gallery-info">
+                    <h3>Black & Gold Banquet</h3>
+                    <p>Weddings & Receptions</p>
+                </div>
+            </div>
+
+            <!-- pic 5.jpeg -->
+            <div class="gallery-item interactive-pic" data-category="tablescape" onclick="openLightbox('pic 5.jpeg')">
+                <div class="gallery-img-box"><img src="pic 5.jpeg" alt="Elegant Place Settings"></div>
+                <div class="gallery-info">
+                    <h3>Elegant Place Settings</h3>
+                    <p>Table Styling & Lounges</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="section-header">
+            <h2>Our Styling Services</h2>
+            <p>Every event is tailored with precision, elegance, and our signature dusty pink touch.</p>
+        </div>
+        <div class="services-container">
+            <div class="service-card">
+                <h3>Baby Showers & Reveals</h3>
+                <p>Magical setups, custom backdrops, themed balloon arches, and pristine seating arrangements for welcoming new arrivals.</p>
+            </div>
+            <div class="service-card">
+                <h3>Weddings & Receptions</h3>
+                <p>Bespoke tablescapes, luxury floral centerpieces, stage styling, and romantic lighting designed for your special day.</p>
+            </div>
+            <div class="service-card">
+                <h3>Private Dinner Parties</h3>
+                <p>Intimate dining experiences featuring exquisite cutlery, candle arrangements, and luxurious textured linens.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Booking Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-box">
+            <div class="contact-info">
+                <h2>Let's Style Your Next Event</h2>
+                <p>Get in touch with Lucky Decoration today to check availability and discuss your vision.</p>
+                <div class="contact-detail">
+                    <span>📞</span> +27 81 414 6710
+                </div>
+                <div class="contact-detail">
+                    <span>💬</span> WhatsApp Available 24/7
+                </div>
+                <div class="contact-detail">
+                    <span>📍</span> South Africa (Nationwide Styling)
+                </div>
+            </div>
+            <form onsubmit="sendWhatsAppInquiry(event)">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="clientName" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" class="form-control" id="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" id="eventType">
+                        <option value="Baby Shower / Reveal">Baby Shower / Gender Reveal</option>
+                        <option value="Wedding / Reception">Wedding / Reception</option>
+                        <option value="Private Dining / Party">Private Dinner / Party</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="eventNotes" placeholder="Tell us about your theme, guest count, or vision..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Lucky Decoration. All Rights Reserved. Crafted with Dusty & Sweet Pink Elegance.</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close">&times;</button>
+        <img id="lightboxImg" src="" alt="Enlarged View">
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/27814146710?text=Hi%20Lucky%20Decoration,%20I%20would%20like%20to%20book%20an%20event." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
+
+    <script>
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        function filterGallery(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function sendWhatsAppInquiry(e) {
+            e.preventDefault();
+            const name = document.getElementById('clientName').value;
+            const date = document.getElementById('eventDate').value;
+            const type = document.getElementById('eventType').value;
+            const notes = document.getElementById('eventNotes').value;
+
+            const text = `Hi Lucky Decoration, my name is ${name}. I want to inquire about decor for a ${type} on ${date}. Details: ${notes}`;
+            const url = `https://wa.me/27814146710?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        // Interactive Mouse Cursor & Touch Movement for Photos
+        document.querySelectorAll('.interactive-pic').forEach(card => {
+            const img = card.querySelector('img');
+
+            function applyMovement(clientX, clientY) {
+                const rect = card.getBoundingClientRect();
+                const x = (clientX - rect.left) / rect.width - 0.5;
+                const y = (clientY - rect.top) / rect.height - 0.5;
+
+                const rotateX = -y * 12;
+                const rotateY = x * 12;
+                const moveX = x * 14;
+                const moveY = y * 14;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+                if (img) {
+                    img.style.transform = `scale(1.09) translate(${moveX}px, ${moveY}px)`;
+                }
+            }
+
+            function resetMovement() {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+                card.classList.remove('is-touched');
+                if (img) {
+                    img.style.transform = 'scale(1) translate(0px, 0px)';
+                }
+            }
+
+            // Mouse cursor movement
+            card.addEventListener('mousemove', (e) => {
+                applyMovement(e.clientX, e.clientY);
+            });
+
+            card.addEventListener('mouseleave', resetMovement);
+
+            // Mobile touch & drag movement
+            card.addEventListener('touchstart', (e) => {
+                card.classList.add('is-touched');
+                if (e.touches.length > 0) {
+                    applyMovement(e.touches[0].clientX, e.touches[0].clientY);
+                }
+            }, { passive: true });
+
+            card.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) {
+                    applyMovement(e.touches[0].clientX, e.touches[0].clientY);
+                }
+            }, { passive: true });
+
+            card.addEventListener('touchend', resetMovement);
+        });
+    </script>
+</body>
+</html>
